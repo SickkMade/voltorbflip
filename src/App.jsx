@@ -1,6 +1,6 @@
 import GameBoard from "./components/GameBoard"
 import Stats from "./components/Stats"
-import { useState, createContext, useEffect } from "react"
+import { useState, createContext } from "react"
 
 export const AppContext = createContext();
 

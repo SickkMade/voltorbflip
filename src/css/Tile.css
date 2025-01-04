@@ -10,3 +10,34 @@
 .tile:hover{
     cursor: pointer;
 }
+
+.flip{
+    animation: 1s forwards tileflip;
+}
+
+@keyframes tileflip {
+    0% {
+        transform: rotate3d(-1, 0, 0, 0deg);
+        background-color: pink;
+        border-color: black;
+        color: black;
+    }
+    49.99% {
+        transform: rotate3d(-1, 0, 0, 90deg);
+        background-color: pink;
+        border-color: black;
+        color: black;
+    }
+    50% {
+        transform: rotate3d(-1, 0, 0, 90deg);
+        background-color: green;
+        border-color: white;
+        color: white;
+    }
+    100% {
+        transform: rotate3d(-1, 0, 0, 0deg);
+        background-color: green;
+        border-color: white;
+        color: white;
+    }
+}
