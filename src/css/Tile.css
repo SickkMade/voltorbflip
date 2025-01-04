@@ -1,0 +1,12 @@
+.tile{
+    background-color: pink;
+    width:5rem;
+    height:5rem;
+    text-align: center;
+    margin:1rem;
+    border-radius:.5rem;
+    border: 1px black solid;
+}
+.tile:hover{
+    cursor: pointer;
+}
