@@ -6,6 +6,7 @@
     margin:1rem;
     border-radius:.5rem;
     border: 1px black solid;
+    color:transparent;
 }
 .tile:hover{
     cursor: pointer;
@@ -15,18 +16,31 @@
     animation: 1s forwards tileflip;
 }
 
+.bomb{
+    opacity: 0;
+    width:3rem;
+}
+
+.flip .bomb{
+    opacity:1;
+}
+
+.row-tile{
+    color:black;
+}
+
 @keyframes tileflip {
     0% {
         transform: rotate3d(0, 1, 0, 0deg);
         background-color: pink;
         border-color: black;
-        color: black;
+        color: transparent;
     }
     49.99% {
         transform: rotate3d(0, 1, 0, 90deg);
         background-color: pink;
         border-color: black;
-        color: black;
+        color: transparent;
     }
     50% {
         transform: rotate3d(0, 1, 0, 90deg);
