@@ -1,0 +1,10 @@
+.popup-container{
+    border:1px pink solid;
+    background-color:white;
+    padding:5rem;
+    border-radius:1rem;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+}

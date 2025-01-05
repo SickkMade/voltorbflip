@@ -5,7 +5,7 @@ import { AppContext } from '../App';
 function Tile({value}) {
     const [isFlipped, setIsFlipped] = useState(false);
     const tileRef = useRef(null)
-    const {increaseScore, handleLose, resetCounter} = useContext(AppContext);
+    const {increaseScore, handleLose, gameState} = useContext(AppContext);
 
     const handleClick = () => {
         //increase coins if first flip
@@ -21,9 +21,15 @@ function Tile({value}) {
     },[isFlipped])
 
     useEffect(()=>{
-        tileRef.current.classList.remove("flip")
-        setIsFlipped(false);
-    },[resetCounter])
+        if(gameState==="lost"){
+            tileRef.current.classList.add("flip")
+            setIsFlipped(true);
+        }
+        else if(gameState==="revealAll"){
+            tileRef.current.classList.remove("flip")
+            setIsFlipped(false);
+        }
+    },[gameState])
   return (
     <div className="tile" onClick={handleClick} ref={tileRef}>
         {value===-1?<img className="bomb" src="miku.png"></img>:value}

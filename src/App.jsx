@@ -1,5 +1,6 @@
 import GameBoard from "./components/GameBoard"
 import Stats from "./components/Stats"
+import GameLostContainer from "./components/GameLostContainer";
 import { useState, createContext } from "react"
 
 export const AppContext = createContext();
@@ -8,8 +9,8 @@ function App() {
   const [level, setLevel] = useState(1);
   const [currentCoins, setCurrentCoins] = useState(0);
   const [earnedCoins, setEarnedCoins] = useState(0);
+  const [gameState, setGameState] = useState('playing'); // 'playing', 'lost', 'revealAll', 'hideAll', 'nextLevel'
   const [gameBoard, setGameBoard] = useState(Array.from(Array(5), () => new Array(5).fill(1)))
-  const [resetCounter, setResetCounter] = useState(0)
 
   const increaseScore = (value) => {
     setCurrentCoins(prevValue => {
@@ -56,8 +57,7 @@ function App() {
   }
 
   const handleLose = () => {
-    populateGameBoard(5, 5)
-    setResetCounter(prevValue => prevValue+1)
+    setGameState("lost")
   }
 
   const appContextValue = {
@@ -70,7 +70,7 @@ function App() {
     populateGameBoard,
     gameBoard,
     setGameBoard,
-    resetCounter,
+    gameState,
   }
 
 
@@ -78,6 +78,7 @@ function App() {
     <AppContext.Provider value={appContextValue}>
       <Stats />
       <GameBoard />
+      {gameState == "lost" && <GameLostContainer />}
       <div>Memo</div>
     </AppContext.Provider>
   )
