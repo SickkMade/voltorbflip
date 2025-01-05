@@ -9,6 +9,7 @@ function Tile({value}) {
 
     const handleClick = () => {
         //increase coins if first flip
+        if(gameState != "playing") return //only click if game is runnign
         if(!isFlipped) increaseScore(value)
         if(value === -1) handleLose();
         setIsFlipped(true);
@@ -17,16 +18,16 @@ function Tile({value}) {
     useEffect(()=>{
         if(isFlipped){
             tileRef.current.classList.add("flip")
+        } else{
+            tileRef.current.classList.remove("flip")
         }
     },[isFlipped])
 
     useEffect(()=>{
-        if(gameState==="lost"){
-            tileRef.current.classList.add("flip")
+        if(gameState==="revealAll"){
             setIsFlipped(true);
         }
-        else if(gameState==="revealAll"){
-            tileRef.current.classList.remove("flip")
+        if(gameState==="playing"){
             setIsFlipped(false);
         }
     },[gameState])

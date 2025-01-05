@@ -1,7 +1,8 @@
 import GameBoard from "./components/GameBoard"
 import Stats from "./components/Stats"
 import GameLostContainer from "./components/GameLostContainer";
-import { useState, createContext } from "react"
+import NewLevelContainer from "./components/NewLevelContainer";
+import { useState, createContext, useEffect } from "react"
 
 export const AppContext = createContext();
 
@@ -9,13 +10,13 @@ function App() {
   const [level, setLevel] = useState(1);
   const [currentCoins, setCurrentCoins] = useState(0);
   const [earnedCoins, setEarnedCoins] = useState(0);
-  const [gameState, setGameState] = useState('playing'); // 'playing', 'lost', 'revealAll', 'hideAll', 'nextLevel'
+  const [gameState, setGameState] = useState('playing'); // 'playing', 'lost', 'revealAll'
   const [gameBoard, setGameBoard] = useState(Array.from(Array(5), () => new Array(5).fill(1)))
 
   const increaseScore = (value) => {
     setCurrentCoins(prevValue => {
       if(prevValue === 0) return value
-      else if(value === -1) return 0
+      else if(value === -1) return prevValue
       return value*prevValue
     });
   }
@@ -57,8 +58,12 @@ function App() {
   }
 
   const handleLose = () => {
-    setGameState("lost")
+    // puts in bottom of stack
+    setTimeout(() => {
+      setGameState("lost");
+    }, 0);
   }
+
 
   const appContextValue = {
     level,
@@ -73,12 +78,30 @@ function App() {
     gameState,
   }
 
+  useEffect(()=>{
+    const handleClick = () => {
+      if(gameState=="lost"){
+        setGameState("revealAll")
+      }
+      else if(gameState=="revealAll"){
+        setGameState("playing")
+        populateGameBoard(5,10);
+      }
+    }
+    document.addEventListener('click', handleClick)
+
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  },[gameState])
+
 
   return (
     <AppContext.Provider value={appContextValue}>
       <Stats />
       <GameBoard />
       {gameState == "lost" && <GameLostContainer />}
+      {gameState == "playing" && <NewLevelContainer />}
       <div>Memo</div>
     </AppContext.Provider>
   )
