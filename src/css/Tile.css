@@ -10,9 +10,6 @@
     border: 3px black solid;
     color:transparent;
 }
-.active-tile{
-    border-color: red;
-}
 .tile:hover{
     cursor: pointer;
 }
@@ -35,6 +32,13 @@
     font-size:1.5rem;
     line-height:2.5rem;
     text-align: right;
+    position:relative;
+}
+.row-tile > img {
+    width:3rem;
+    position:absolute;
+    left:.5rem;
+    bottom:.5rem;
 }
 
 
@@ -64,4 +68,8 @@
         border-color: pink;
         color: white;
     }
+}
+
+.active-tile{
+    border-color: red;
 }

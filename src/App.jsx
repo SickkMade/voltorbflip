@@ -8,7 +8,7 @@ import { useState, createContext, useEffect } from "react"
 export const AppContext = createContext();
 
 function App() {
-  const [currentActiveCell, setCurrentActiveCell] = useState('0-0');
+  const [currentActiveCell, setCurrentActiveCell] = useState(null);
   const [level, setLevel] = useState(1);
   const [currentCoins, setCurrentCoins] = useState(0);
   const [earnedCoins, setEarnedCoins] = useState(0);
