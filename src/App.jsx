@@ -111,6 +111,7 @@ function App() {
         setCurrentCoins(0)
       }
       else if(gameState=="revealAll"){
+        setCurrentActiveCell(null)
         setGameState("playing")
         switch(level){
           case 1:

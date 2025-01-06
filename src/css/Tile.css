@@ -47,25 +47,21 @@
     0% {
         transform: rotate3d(0, 1, 0, 0deg);
         background-color: pink;
-        border-color: black;
         color: transparent;
     }
     49.99% {
         transform: rotate3d(0, 1, 0, 90deg);
         background-color: pink;
-        border-color: black;
         color: transparent;
     }
     50% {
         transform: rotate3d(0, 1, 0, 90deg);
         background-color: green;
-        border-color: pink;
         color: white;
     }
     100% {
         transform: rotate3d(0, 0, 0, 0deg);
         background-color: green;
-        border-color: pink;
         color: white;
     }
 }
