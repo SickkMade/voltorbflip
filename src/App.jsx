@@ -8,7 +8,7 @@ import { useState, createContext, useEffect } from "react"
 export const AppContext = createContext();
 
 function App() {
-  const [currentActiveCell, setCurrentActiveCell] = useState(null);
+  const [currentActiveCell, setCurrentActiveCell] = useState('0-0');
   const [level, setLevel] = useState(1);
   const [currentCoins, setCurrentCoins] = useState(0);
   const [earnedCoins, setEarnedCoins] = useState(0);
@@ -148,6 +148,33 @@ function App() {
     }
   },[gameState])
 
+  const handleKeyDown = (e) => {
+    const [currentRow, currentCol] = currentActiveCell.split('-').map(Number)
+    let newRow = currentRow;
+    let newCol = currentCol;
+    switch(e.key){
+      case 'ArrowUp':
+        newRow = Math.max(0, currentRow - 1);
+        break;
+      case 'ArrowDown':
+        newRow = (currentRow + 1) % 5;
+        break;
+      case 'ArrowLeft':
+        newCol = Math.max(0, currentCol - 1);
+        break;
+      case 'ArrowRight':
+        newCol = (currentCol + 1)%5;
+        break;
+      default:
+        return; 
+    }
+    setCurrentActiveCell(`${newRow}-${newCol}`)
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentActiveCell]);
 
   return (
     <AppContext.Provider value={appContextValue}>
