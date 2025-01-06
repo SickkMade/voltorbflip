@@ -102,7 +102,7 @@ function App() {
         setLevel(prevValue => Math.max(1, prevValue-1))
       }
       else if(gameState=="win"){
-        setLevel(prevValue => prevValue+1)
+        setLevel(prevValue => Math.min(prevValue+1,8))
         setGameState("revealAll")
         setEarnedCoins(prevValue => prevValue+currentCoins)
         setCurrentCoins(0)
