@@ -7,8 +7,11 @@
     text-align: center;
     margin:1rem;
     border-radius:.5rem;
-    border: 1px black solid;
+    border: 3px black solid;
     color:transparent;
+}
+.active-tile{
+    border-color: red;
 }
 .tile:hover{
     cursor: pointer;
@@ -34,6 +37,8 @@
     text-align: right;
 }
 
+
+
 @keyframes tileflip {
     0% {
         transform: rotate3d(0, 1, 0, 0deg);
@@ -50,13 +55,13 @@
     50% {
         transform: rotate3d(0, 1, 0, 90deg);
         background-color: green;
-        border-color: white;
+        border-color: pink;
         color: white;
     }
     100% {
         transform: rotate3d(0, 0, 0, 0deg);
         background-color: green;
-        border-color: white;
+        border-color: pink;
         color: white;
     }
 }

@@ -19,8 +19,8 @@ function GameBoard() {
     <section className="GameBoard">
         {gameBoard.map((value, i)=>(
             <div className="Row" key={i}>
-                {gameBoard[i].map((value, i) => (
-                    <Tile key={`tile ${i}`} value={value}/>
+                {gameBoard[i].map((value, j) => (
+                    <Tile id={`${i}-${j}`} key={`tile ${j}`} value={value}/>
                 ))}
                 <RowTile GameBoard={gameBoard} index={i}/>
             </div>

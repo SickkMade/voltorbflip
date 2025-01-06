@@ -8,6 +8,7 @@ import { useState, createContext, useEffect } from "react"
 export const AppContext = createContext();
 
 function App() {
+  const [currentActiveCell, setCurrentActiveCell] = useState('0-0');
   const [level, setLevel] = useState(1);
   const [currentCoins, setCurrentCoins] = useState(0);
   const [earnedCoins, setEarnedCoins] = useState(0);
@@ -92,6 +93,8 @@ function App() {
     gameBoard,
     setGameBoard,
     gameState,
+    setCurrentActiveCell,
+    currentActiveCell,
   }
 
   useEffect(()=>{

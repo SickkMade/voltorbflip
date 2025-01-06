@@ -2,10 +2,10 @@ import '../css/Tile.css'
 import { useState, useEffect, useRef, useContext } from 'react'
 import { AppContext } from '../App';
 
-function Tile({value}) {
+function Tile({value, id}) {
     const [isFlipped, setIsFlipped] = useState(false);
     const tileRef = useRef(null)
-    const {increaseScore, handleLose, gameState} = useContext(AppContext);
+    const {currentActiveCell, increaseScore, handleLose, gameState} = useContext(AppContext);
 
     const handleClick = () => {
         //increase coins if first flip
@@ -32,7 +32,7 @@ function Tile({value}) {
         }
     },[gameState])
   return (
-    <div className="tile" onClick={handleClick} ref={tileRef}>
+    <div className={`tile ${currentActiveCell === id ? 'active-tile' : ''}`} onClick={handleClick} ref={tileRef}>
         {value===-1?<img className="bomb" src="miku.png"></img>:value}
     </div>
   )
