@@ -176,6 +176,7 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentActiveCell]);
 
+
   return (
     <AppContext.Provider value={appContextValue}>
       <Stats />

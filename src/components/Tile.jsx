@@ -17,6 +17,18 @@ function Tile({value, id}) {
     }
 
     useEffect(()=>{
+        const onSpace = (e) => {
+            if(e.key === ' ' && currentActiveCell === id){
+                setIsFlipped(true);
+            }
+        }
+
+        window.addEventListener('keydown', onSpace);
+        return () => window.removeEventListener('keydown', onSpace);
+
+    },[currentActiveCell])
+
+    useEffect(()=>{
         if(gameState==="revealAll"){
             setIsFlipped(true);
         }
