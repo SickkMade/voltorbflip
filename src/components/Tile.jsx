@@ -47,7 +47,7 @@ function Tile({value, id}) {
         window.addEventListener('keydown', onKeyboard);
         return () => window.removeEventListener('keydown', onKeyboard);
 
-    },[currentActiveCell])
+    },[currentActiveCell, gameState])
 
     useEffect(()=>{
         if(gameState==="revealAll"){
