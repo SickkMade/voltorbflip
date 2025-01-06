@@ -18,6 +18,10 @@ function Tile({value, id}) {
         if(!isFlipped) increaseScore(value)
         if(value === -1) handleLose();
         setIsFlipped(true);
+        setIsBombIndicatorActive(false)
+        setIs3IndicatorActive(false)
+        setIs2IndicatorActive(false)
+        setIs1IndicatorActive(false)
     }
 
     useEffect(()=>{
@@ -47,6 +51,10 @@ function Tile({value, id}) {
     useEffect(()=>{
         if(gameState==="revealAll"){
             setIsFlipped(true);
+            setIsBombIndicatorActive(false)
+            setIs3IndicatorActive(false)
+            setIs2IndicatorActive(false)
+            setIs1IndicatorActive(false)
         }
         if(gameState==="playing"){
             setIsFlipped(false);
