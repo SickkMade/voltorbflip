@@ -20,11 +20,16 @@ function App() {
     setCurrentCoins(prevValue => {
       if(prevValue === 0) return value
       else if(value === -1) return prevValue
-      if(value*prevValue === maxMoney) handleWin();
       return value*prevValue
     });
 
   }
+
+  useEffect(() => {
+    if (currentCoins === maxMoney && currentCoins > 1) {
+      handleWin();
+    }
+  }, [currentCoins, maxMoney]);
 
   const populateGameBoard = (bombsNum, valueTilesNum) => {
       //board to return
