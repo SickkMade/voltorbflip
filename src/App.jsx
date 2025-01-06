@@ -99,11 +99,12 @@ function App() {
       if(gameState=="lost"){
         setCurrentCoins(0)
         setGameState("revealAll")
+        setLevel(prevValue => Math.max(1, prevValue-1))
       }
       else if(gameState=="win"){
         setLevel(prevValue => prevValue+1)
         setGameState("revealAll")
-        setEarnedCoins(currentCoins)
+        setEarnedCoins(prevValue => prevValue+currentCoins)
         setCurrentCoins(0)
       }
       else if(gameState=="revealAll"){
