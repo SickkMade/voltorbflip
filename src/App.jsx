@@ -2,6 +2,7 @@ import GameBoard from "./components/GameBoard"
 import Stats from "./components/Stats"
 import GameLostContainer from "./components/GameLostContainer";
 import NewLevelContainer from "./components/NewLevelContainer";
+import GameWinContainer from "./components/GameWinContainer";
 import { useState, createContext, useEffect } from "react"
 
 export const AppContext = createContext();
@@ -11,18 +12,22 @@ function App() {
   const [currentCoins, setCurrentCoins] = useState(0);
   const [earnedCoins, setEarnedCoins] = useState(0);
   const [gameState, setGameState] = useState('playing'); // 'playing', 'lost', 'revealAll'
+  const [maxMoney, setMaxMoney] = useState(0); //max money to get each round
   const [gameBoard, setGameBoard] = useState(Array.from(Array(5), () => new Array(5).fill(1)))
 
   const increaseScore = (value) => {
     setCurrentCoins(prevValue => {
       if(prevValue === 0) return value
       else if(value === -1) return prevValue
+      if(value*prevValue === maxMoney) handleWin();
       return value*prevValue
     });
+
   }
 
   const populateGameBoard = (bombsNum, valueTilesNum) => {
       //board to return
+      let newMaxMoney = 1;
       let newBoard = [...gameBoard]
       //flatten 
       let flatboard = gameBoard.flat(2)
@@ -34,12 +39,16 @@ function App() {
           }
           else if(valueTilesNum > 0){
               valueTilesNum--
-              return Math.random() < 0.5 ? 2 : 3
+              let currentTile = Math.random() < 0.5 ? 2 : 3
+              newMaxMoney *= currentTile
+              return currentTile
           }
           else{
               return 1
           }
       })
+
+      setMaxMoney(newMaxMoney);
 
       //fisher-yates my goat (i dont think i spelled it right)
       for (let i = flatboard.length - 1; i > 0; i--) {
@@ -64,6 +73,13 @@ function App() {
     }, 0);
   }
 
+  const handleWin = () => {
+    setTimeout(() => {
+      setGameState("win"); //ADD WIN LOGIC
+    }, 0)
+    
+  }
+
 
   const appContextValue = {
     level,
@@ -81,7 +97,14 @@ function App() {
   useEffect(()=>{
     const handleClick = () => {
       if(gameState=="lost"){
+        setCurrentCoins(0)
         setGameState("revealAll")
+      }
+      else if(gameState=="win"){
+        setLevel(prevValue => prevValue+1)
+        setGameState("revealAll")
+        setEarnedCoins(currentCoins)
+        setCurrentCoins(0)
       }
       else if(gameState=="revealAll"){
         setGameState("playing")
@@ -101,6 +124,7 @@ function App() {
       <Stats />
       <GameBoard />
       {gameState == "lost" && <GameLostContainer />}
+      {gameState == "win" && <GameWinContainer />}
       {gameState == "playing" && <NewLevelContainer />}
       <div>Memo</div>
     </AppContext.Provider>
