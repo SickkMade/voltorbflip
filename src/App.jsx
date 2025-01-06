@@ -50,6 +50,7 @@ function App() {
       })
 
       setMaxMoney(newMaxMoney);
+      console.log(newMaxMoney)
 
       //fisher-yates my goat (i dont think i spelled it right)
       for (let i = flatboard.length - 1; i > 0; i--) {

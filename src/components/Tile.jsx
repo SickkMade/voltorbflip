@@ -26,7 +26,7 @@ function Tile({value, id}) {
 
     useEffect(()=>{
         const onKeyboard = (e) => {
-            if(gameState!=='playing')return
+            if(gameState!=='playing' || isFlipped)return
             if(e.key === ' ' && currentActiveCell === id){
                 handleClick()
             }
