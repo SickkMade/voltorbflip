@@ -109,7 +109,32 @@ function App() {
       }
       else if(gameState=="revealAll"){
         setGameState("playing")
-        populateGameBoard(5,10);
+        switch(level){
+          case 1:
+            populateGameBoard(6,2);
+            break;
+          case 2:
+            populateGameBoard(6,6);
+            break;
+          case 3:
+            populateGameBoard(7,8);
+            break;
+          case 4:
+            populateGameBoard(7,10);
+            break;
+          case 5:
+            populateGameBoard(8,10);
+            break;
+          case 6:
+            populateGameBoard(8,12);
+            break;
+          case 7:
+            populateGameBoard(8,14);
+            break;
+          case 8:
+            populateGameBoard(10,14);
+            break;
+        }
       }
     }
     document.addEventListener('click', handleClick)

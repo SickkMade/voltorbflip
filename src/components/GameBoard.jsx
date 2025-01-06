@@ -10,7 +10,7 @@ function GameBoard() {
     const {populateGameBoard, gameBoard, setGameBoard} = useContext(AppContext)
 
     useEffect(()=>{
-        setGameBoard(populateGameBoard(5, 5))
+        setGameBoard(populateGameBoard(6, 2))
     }, [])
 
 
