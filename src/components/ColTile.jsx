@@ -13,7 +13,7 @@ function ColTile({GameBoard, index}) {
   return (
     <div className="row-tile tile">
         <img src="miku.png"></img>
-        <div>0{getColTiles(index).coins}</div>
+        <div>{getColTiles(index).coins <= 9 ? 0 : ''}{getColTiles(index).coins}</div>
         <div>{getColTiles(index).bombs}</div>
     </div>
     
