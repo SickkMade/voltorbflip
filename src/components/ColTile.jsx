@@ -12,7 +12,7 @@ function ColTile({GameBoard, index}) {
 
   return (
     <div className="row-tile tile">
-        <div>{getColTiles(index).coins}</div>
+        <div>0{getColTiles(index).coins}</div>
         <div>{getColTiles(index).bombs}</div>
     </div>
     

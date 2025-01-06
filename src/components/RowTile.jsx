@@ -12,7 +12,7 @@ function RowTile({GameBoard, index}) {
 
   return (
     <div className="row-tile tile">
-        <div>{getRowCounts(GameBoard[index]).coins}</div>
+        <div>0{getRowCounts(GameBoard[index]).coins}</div>
         <div>{getRowCounts(GameBoard[index]).bombs}</div>
     </div>
     
