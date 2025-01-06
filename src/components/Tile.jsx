@@ -26,6 +26,7 @@ function Tile({value, id}) {
 
     useEffect(()=>{
         const onKeyboard = (e) => {
+            if(gameState==='revealAll')return
             if(e.key === ' ' && currentActiveCell === id){
                 handleClick()
             }
