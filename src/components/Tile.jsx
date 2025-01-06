@@ -4,6 +4,10 @@ import { AppContext } from '../App';
 
 function Tile({value, id}) {
     const [isFlipped, setIsFlipped] = useState(false);
+    const [isBombIndicatorActive, setIsBombIndicatorActive] = useState(false);
+    const [is1IndicatorActive, setIs1IndicatorActive] = useState(false);
+    const [is2IndicatorActive, setIs2IndicatorActive] = useState(false);
+    const [is3IndicatorActive, setIs3IndicatorActive] = useState(false);
     const tileRef = useRef(null)
     const {setCurrentActiveCell, currentActiveCell, increaseScore, handleLose, gameState} = useContext(AppContext);
 
@@ -17,14 +21,26 @@ function Tile({value, id}) {
     }
 
     useEffect(()=>{
-        const onSpace = (e) => {
+        const onKeyboard = (e) => {
             if(e.key === ' ' && currentActiveCell === id){
-                setIsFlipped(true);
+                handleClick()
+            }
+            if(e.key==='`' && currentActiveCell === id){
+                setIsBombIndicatorActive(prevValue => !prevValue)
+            }
+            if(e.key==='1' && currentActiveCell === id){
+                setIs1IndicatorActive(prevValue => !prevValue)
+            }
+            if(e.key==='2' && currentActiveCell === id){
+                setIs2IndicatorActive(prevValue => !prevValue)
+            }
+            if(e.key==='3' && currentActiveCell === id){
+                setIs3IndicatorActive(prevValue => !prevValue)
             }
         }
 
-        window.addEventListener('keydown', onSpace);
-        return () => window.removeEventListener('keydown', onSpace);
+        window.addEventListener('keydown', onKeyboard);
+        return () => window.removeEventListener('keydown', onKeyboard);
 
     },[currentActiveCell])
 
@@ -39,6 +55,10 @@ function Tile({value, id}) {
   return (
     <div className={`tile ${isFlipped ? 'flip' : ''} ${currentActiveCell === id ? 'active-tile' : ''}`} onClick={handleClick} ref={tileRef}>
         {value===-1?<img className="bomb" src="miku.png"></img>:value}
+        {isBombIndicatorActive && <span className="indicator indicator-bomb"></span>}
+        {is1IndicatorActive && <span className="indicator indicator-1">1</span>}
+        {is2IndicatorActive && <span className="indicator indicator-2">2</span>}
+        {is3IndicatorActive && <span className="indicator indicator-3">3</span>}
     </div>
   )
 }

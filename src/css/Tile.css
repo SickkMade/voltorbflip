@@ -9,9 +9,35 @@
     border-radius:.5rem;
     border: 3px black solid;
     color:transparent;
+    position:relative;
 }
 .tile:hover{
     cursor: pointer;
+}
+
+.indicator{
+    color:orange;
+    position:absolute;
+    font-size:0.5em;
+    line-height: 1em;
+}
+.indicator-bomb{
+    top:0;
+    left:0;
+    border:.5rem orange solid;
+    border-radius: 1rem;
+}
+.indicator-1{
+    top:0;
+    right:0;
+}
+.indicator-2{
+    bottom:0;
+    left:0;
+}
+.indicator-3{
+    bottom:0;
+    right:0;
 }
 
 .flip{
