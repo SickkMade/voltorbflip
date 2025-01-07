@@ -55,7 +55,7 @@ function Tile({value, id}) {
     useEffect(()=>{
         const onKeyboard = (e) => {
             if(gameState!=='playing' || isFlipped)return
-            if(e.key === ' ' && currentActiveCell === id){
+            if(e.key === ' ' && currentActiveCell === id && !isMemoOpened){
                 handleClick()
             }
             if(e.key==='`' && currentActiveCell === id){
@@ -77,7 +77,7 @@ function Tile({value, id}) {
         
         return () => window.removeEventListener('keydown', onKeyboard);
 
-    },[currentActiveCell, gameState, isFlipped])
+    },[currentActiveCell, gameState, isFlipped, isMemoOpened])
 
     useEffect(()=>{
         if(gameState==="revealAll"){
