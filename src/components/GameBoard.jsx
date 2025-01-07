@@ -1,6 +1,7 @@
 import Tile from "./Tile"
 import RowTile from "./RowTile"
 import ColTile from "./ColTile"
+import CornerTile from "./CornerTile"
 import { useState, useEffect, useContext } from "react"
 import '../css/GameBoard.css'
 import { AppContext } from "../App"
@@ -29,6 +30,7 @@ function GameBoard() {
         {gameBoard[0].map((value,i)=>(
             <ColTile key={`col ${i}`} GameBoard={gameBoard} index={i} />
         ))}
+        <CornerTile GameBoard={gameBoard} />
         </div>
     </section>
     
