@@ -2,7 +2,7 @@
     background-color: pink;
     aspect-ratio: 1;
     flex: 1;
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
     margin: 0.1rem;
     border-radius: 0.5rem;
@@ -12,6 +12,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-image: url(blanktile.svg);
+    background-repeat: no-repeat;
+    background-size: 101%;
 }
 .tile:hover{
     cursor: pointer;
@@ -44,7 +48,7 @@
 }
 
 .flip{
-    animation: 1s forwards tileflip;
+    animation: .25s forwards tileflip;
 }
 
 .bomb{
@@ -57,11 +61,14 @@
 }
 
 .row-tile{
+    font-size:2rem;
+    background-image:none;
     display:block;
     color:black;
     line-height:2rem;
     text-align: right;
     position:relative;
+    background-color:#de7055;
 }
 .row-tile > *{
     font-size:80%;
@@ -78,23 +85,26 @@
 @keyframes tileflip {
     0% {
         transform: rotate3d(0, 1, 0, 0deg);
-        background-color: pink;
         color: transparent;
     }
     49.99% {
         transform: rotate3d(0, 1, 0, 90deg);
-        background-color: pink;
         color: transparent;
     }
     50% {
         transform: rotate3d(0, 1, 0, 90deg);
-        background-color: green;
-        color: white;
+        background-color: #bc8c85;
+        background-image:none;
+        color: black;
+        text-shadow: 4px 4px 0 green;
+        -webkit-text-stroke: 2px white;
     }
     100% {
         transform: rotate3d(0, 0, 0, 180deg);
-        background-color: green;
-        color: white;
+        background-color: #bc8c85;
+        background-image:none;
+        color: black;
+        -webkit-text-stroke: 1px white;
     }
 }
 
@@ -104,4 +114,20 @@
 }
 .active-tile-memo{
     border-color:yellow;
+}
+.row-tile-2{
+    background-color:#45a746;
+}
+.row-tile-3{
+    background-color:#e69f43;
+}
+
+.row-tile-4{
+    background-color:#3792f5;
+}
+.row-tile-5{
+    background-color:#bf65dd;
+}
+.row-tile-6{
+    background-color:#65cddd;
 }

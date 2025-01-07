@@ -11,7 +11,7 @@ function RowTile({GameBoard, index}) {
 
 
   return (
-    <div className="row-tile tile">
+    <div className={`row-tile tile row-tile-${index+1}`}>
         <img src="miku.png"></img>
         <div>{getRowCounts(GameBoard[index]).coins <= 9 ? 0 : ''}{getRowCounts(GameBoard[index]).coins}</div>
         <div>{getRowCounts(GameBoard[index]).bombs}</div>

@@ -12,7 +12,7 @@ function CornerTile({GameBoard}) {
 
 
   return (
-    <div className="row-tile tile">
+    <div className="row-tile tile row-tile-6">
         <img src="miku.png"></img>
         <div>{getCornerTile().coins <= 9 ? 0 : ''}{getCornerTile().coins}</div>
         <div>{getCornerTile().bombs}</div>
