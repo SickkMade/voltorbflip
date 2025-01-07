@@ -76,3 +76,13 @@
     color:yellow;
     background-color:green;
 }
+.memo-wrapper{
+    display:flex;
+    flex-flow:column;
+    gap:2rem;
+}
+
+.invisible{
+    opacity:0;
+    pointer-events: none;
+}

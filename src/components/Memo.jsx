@@ -5,12 +5,12 @@ import MemoActionsMenu from './MemoActionsMenu';
 
 function Memo() {
 
-    const {isMemoOpened, setIsMemoOpened} = useContext(AppContext);
+    const {setIsMemoOpened} = useContext(AppContext);
 
     const invertIsMemoOpened = () => setIsMemoOpened(prevValue => !prevValue)
 
   return (
-    <>
+    <div className='memo-wrapper'>
     <div className="memo" onClick={invertIsMemoOpened}>
         <span className="memo-action">
             ACTION
@@ -20,8 +20,8 @@ function Memo() {
             <span>Memo</span>
         </span>
     </div>
-    {isMemoOpened && <MemoActionsMenu />}
-    </>
+    <MemoActionsMenu />
+    </div>
   )
 }
 

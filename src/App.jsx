@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import NewLevelContainer from "./components/NewLevelContainer";
 import GameWinContainer from "./components/GameWinContainer";
 import { useState, createContext, useEffect } from "react"
+import Memo from "./components/Memo";
 
 export const AppContext = createContext();
 
@@ -215,6 +216,7 @@ function App() {
         {gameState == "lost" && <GameLostContainer />}
         {gameState == "win" && <GameWinContainer />}
         {gameState == "playing" && <NewLevelContainer />}
+      <Memo />
       </section>
       
     </AppContext.Provider>
