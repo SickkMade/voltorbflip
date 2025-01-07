@@ -43,8 +43,10 @@ function Tile({value, id}) {
                 setIs3IndicatorActive(prevValue => !prevValue)
             }
         }
-
-        window.addEventListener('keydown', onKeyboard);
+        if(gameState == "playing"){
+            window.addEventListener('keydown', onKeyboard);
+        }
+        
         return () => window.removeEventListener('keydown', onKeyboard);
 
     },[currentActiveCell, gameState, isFlipped])

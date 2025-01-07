@@ -103,49 +103,51 @@ function App() {
     currentActiveCell,
   }
 
-  useEffect(()=>{
-    const handleClick = () => {
-      if(gameState=="lost"){
-        setCurrentCoins(0)
-        setGameState("revealAll")
-        setLevel(prevValue => Math.max(1, prevValue-1))
-      }
-      else if(gameState=="win"){
-        setLevel(prevValue => Math.min(prevValue+1,8))
-        setGameState("revealAll")
-        setEarnedCoins(prevValue => prevValue+currentCoins)
-        setCurrentCoins(0)
-      }
-      else if(gameState=="revealAll"){
-        setGameState("playing")
-        switch(level){
-          case 1:
-            populateGameBoard(6,2);
-            break;
-          case 2:
-            populateGameBoard(6,6);
-            break;
-          case 3:
-            populateGameBoard(7,8);
-            break;
-          case 4:
-            populateGameBoard(7,10);
-            break;
-          case 5:
-            populateGameBoard(8,10);
-            break;
-          case 6:
-            populateGameBoard(8,12);
-            break;
-          case 7:
-            populateGameBoard(8,14);
-            break;
-          case 8:
-            populateGameBoard(10,14);
-            break;
-        }
+  const handleClick = () => {
+    if(gameState=="lost"){
+      setCurrentCoins(0)
+      setGameState("revealAll")
+      setLevel(prevValue => Math.max(1, prevValue-1))
+    }
+    else if(gameState=="win"){
+      setLevel(prevValue => Math.min(prevValue+1,8))
+      setGameState("revealAll")
+      setEarnedCoins(prevValue => prevValue+currentCoins)
+      setCurrentCoins(0)
+    }
+    else if(gameState=="revealAll"){
+      setGameState("playing")
+      switch(level){
+        case 1:
+          populateGameBoard(6,2);
+          break;
+        case 2:
+          populateGameBoard(6,6);
+          break;
+        case 3:
+          populateGameBoard(7,8);
+          break;
+        case 4:
+          populateGameBoard(7,10);
+          break;
+        case 5:
+          populateGameBoard(8,10);
+          break;
+        case 6:
+          populateGameBoard(8,12);
+          break;
+        case 7:
+          populateGameBoard(8,14);
+          break;
+        case 8:
+          populateGameBoard(10,14);
+          break;
       }
     }
+  }
+
+  useEffect(()=>{
+    
     document.addEventListener('click', handleClick)
 
     return () => {
@@ -157,6 +159,11 @@ function App() {
     const [currentRow, currentCol] = currentActiveCell.split('-').map(Number)
     let newRow = currentRow;
     let newCol = currentCol;
+    if(gameState !== "playing"){
+      if(e.key === " "){
+        handleClick()
+      }
+    }
     switch(e.key){
       case 'ArrowUp':
         newRow = Math.max(0, currentRow - 1);
@@ -179,7 +186,7 @@ function App() {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentActiveCell]);
+  }, [currentActiveCell, gameState]);
 
 
   return (
