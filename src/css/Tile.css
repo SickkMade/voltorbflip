@@ -1,3 +1,5 @@
+
+
 .tile {
     background-color: pink;
     aspect-ratio: 1;
@@ -13,7 +15,7 @@
     justify-content: center;
     align-items: center;
 
-    background-image: url(blanktile.svg);
+    background-image: url(/blanktile.svg);
     background-repeat: no-repeat;
     background-size: 101%;
 }
