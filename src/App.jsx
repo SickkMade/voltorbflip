@@ -166,13 +166,15 @@ function App() {
     }
     switch(e.key){
       case 'ArrowUp':
-        newRow = Math.max(0, currentRow - 1);
+        newRow = currentRow - 1;
+        if(newRow < 0) newRow = 4
         break;
       case 'ArrowDown':
         newRow = (currentRow + 1) % 5;
         break;
       case 'ArrowLeft':
-        newCol = Math.max(0, currentCol - 1);
+        newCol = currentCol - 1;
+        if(newCol < 0) newCol = 4
         break;
       case 'ArrowRight':
         newCol = (currentCol + 1)%5;
