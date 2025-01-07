@@ -44,7 +44,7 @@ function Tile({value, id}) {
 
     //this use effect changes current tile to global memo
     useEffect(()=>{
-        if(currentActiveCell === id){
+        if(currentActiveCell === id && !isFlipped){
             setIsBombIndicatorActive(isBombMemoActive);
             setIs1IndicatorActive(is1MemoActive);
             setIs2IndicatorActive(is2MemoActive);
