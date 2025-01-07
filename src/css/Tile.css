@@ -1,16 +1,14 @@
-.tile{
+.tile {
     background-color: pink;
     aspect-ratio: 1;
-    flex:1;
-
-    font-size:2rem;
+    flex: 1;
+    font-size: 2rem;
     text-align: center;
-    margin:.1rem;
-    border-radius:.5rem;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
     border: 3px black solid;
-    color:transparent;
-    position:relative;
-
+    color: transparent;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +16,7 @@
 .tile:hover{
     cursor: pointer;
 }
+
 
 .indicator{
     color:red;
@@ -93,7 +92,7 @@
         color: white;
     }
     100% {
-        transform: rotate3d(0, 0, 0, 0deg);
+        transform: rotate3d(0, 0, 0, 180deg);
         background-color: green;
         color: white;
     }
@@ -101,6 +100,7 @@
 
 .active-tile{
     border-color: red;
+    transition: .1s all;
 }
 .active-tile-memo{
     border-color:yellow;
