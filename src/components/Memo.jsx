@@ -5,7 +5,7 @@ import MemoActionsMenu from './MemoActionsMenu';
 
 function Memo() {
 
-    const {setIsMemoOpened} = useContext(AppContext);
+    const {isMemoOpened, setIsMemoOpened} = useContext(AppContext);
 
     const invertIsMemoOpened = () => setIsMemoOpened(prevValue => !prevValue)
 
@@ -16,7 +16,7 @@ function Memo() {
             ACTION
         </span>
         <span className="memo-text">
-            <span>Open</span>
+            <span>{isMemoOpened ? 'Close' : 'Open'}</span>
             <span>Memo</span>
         </span>
     </div>
