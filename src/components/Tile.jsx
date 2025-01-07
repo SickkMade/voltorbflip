@@ -14,7 +14,7 @@ function Tile({value, id}) {
     const handleClick = () => {
         //increase coins if first flip
         setCurrentActiveCell(id)
-        if(gameState != "playing") return //only click if game is runnign
+        if(gameState != "playing" || isFlipped) return //only click if game is runnign
         if(!isFlipped) increaseScore(value)
         if(value === -1) handleLose();
         setIsFlipped(true);
@@ -47,7 +47,7 @@ function Tile({value, id}) {
         window.addEventListener('keydown', onKeyboard);
         return () => window.removeEventListener('keydown', onKeyboard);
 
-    },[currentActiveCell, gameState])
+    },[currentActiveCell, gameState, isFlipped])
 
     useEffect(()=>{
         if(gameState==="revealAll"){
