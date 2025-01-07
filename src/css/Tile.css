@@ -1,11 +1,12 @@
 .tile{
     background-color: pink;
-    height:5rem;
-    width:5rem;
-    font-size:2.5rem;
-    line-height: 4.5rem;
+    aspect-ratio: 1;
+    flex:1;
+
+    font-size:2rem;
+    line-height: 4rem;
     text-align: center;
-    margin:.5rem;
+    margin:.1rem;
     border-radius:.5rem;
     border: 3px black solid;
     color:transparent;
@@ -16,7 +17,7 @@
 }
 
 .indicator{
-    color:orange;
+    color:red;
     position:absolute;
     font-size:0.5em;
     line-height: 1em;
@@ -24,7 +25,7 @@
 .indicator-bomb{
     top:0;
     left:0;
-    border:.5rem orange solid;
+    border:.5rem red solid;
     border-radius: 1rem;
 }
 .indicator-1{
@@ -55,16 +56,18 @@
 
 .row-tile{
     color:black;
-    font-size:1.5rem;
-    line-height:2.5rem;
+    line-height:2rem;
     text-align: right;
     position:relative;
 }
+.row-tile > *{
+    font-size:80%;
+}
 .row-tile > img {
-    width:3rem;
+    width:2.5rem;
     position:absolute;
-    left:.5rem;
-    bottom:.5rem;
+    left:.25rem;
+    bottom:.25rem;
 }
 
 

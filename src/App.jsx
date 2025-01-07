@@ -193,12 +193,15 @@ function App() {
 
   return (
     <AppContext.Provider value={appContextValue}>
-      <Stats />
-      <GameBoard />
-      {gameState == "lost" && <GameLostContainer />}
-      {gameState == "win" && <GameWinContainer />}
-      {gameState == "playing" && <NewLevelContainer />}
-      <div>Memo</div>
+      <section id="app-main-container">
+        <Stats />
+        <GameBoard />
+        {gameState == "lost" && <GameLostContainer />}
+        {gameState == "win" && <GameWinContainer />}
+        {gameState == "playing" && <NewLevelContainer />}
+        <div>Memo</div>
+      </section>
+      
     </AppContext.Provider>
   )
 }
