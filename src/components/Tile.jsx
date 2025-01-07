@@ -9,7 +9,7 @@ function Tile({value, id}) {
     const [is2IndicatorActive, setIs2IndicatorActive] = useState(false);
     const [is3IndicatorActive, setIs3IndicatorActive] = useState(false);
     const tileRef = useRef(null)
-    const {setIsBombMemoActive, setIs1MemoActive, setIs2MemoActive, setIs3MemoActive,isMemoOpened, setCurrentActiveCell, currentActiveCell, increaseScore, handleLose, gameState} = useContext(AppContext);
+    const {isBombMemoActive, is1MemoActive, is2MemoActive, is3MemoActive, setIsBombMemoActive, setIs1MemoActive, setIs2MemoActive, setIs3MemoActive, isMemoOpened, setCurrentActiveCell, currentActiveCell, increaseScore, handleLose, gameState} = useContext(AppContext);
 
     const handleClick = () => {
         //increase coins if first flip
@@ -32,6 +32,7 @@ function Tile({value, id}) {
             return 'active-tile'
         }
     }
+    //this use effect is for setting open memo to current selected memo
     useEffect(() => {
         if(currentActiveCell === id){
             setIsBombMemoActive(isBombIndicatorActive);
@@ -40,6 +41,16 @@ function Tile({value, id}) {
             setIs3MemoActive(is3IndicatorActive);
         }
     }, [currentActiveCell, isBombIndicatorActive, is1IndicatorActive, is2IndicatorActive, is3IndicatorActive])
+
+    //this use effect changes current tile to global memo
+    useEffect(()=>{
+        if(currentActiveCell === id){
+            setIsBombIndicatorActive(isBombMemoActive);
+            setIs1IndicatorActive(is1MemoActive);
+            setIs2IndicatorActive(is2MemoActive);
+            setIs3IndicatorActive(is3MemoActive);
+        }
+    },[isBombMemoActive, is1MemoActive, is2MemoActive, is3MemoActive])
 
     useEffect(()=>{
         const onKeyboard = (e) => {
