@@ -9,12 +9,18 @@ export const AppContext = createContext();
 
 function App() {
   const [currentActiveCell, setCurrentActiveCell] = useState('0-0');
+  const [isMemoOpened, setIsMemoOpened] = useState(false);
   const [level, setLevel] = useState(1);
   const [currentCoins, setCurrentCoins] = useState(0);
   const [earnedCoins, setEarnedCoins] = useState(0);
   const [gameState, setGameState] = useState('playing'); // 'playing', 'lost', 'revealAll'
   const [maxMoney, setMaxMoney] = useState(0); //max money to get each round
   const [gameBoard, setGameBoard] = useState(Array.from(Array(5), () => new Array(5).fill(1)))
+
+  const [isBombMemoActive, setIsBombMemoActive] = useState(false);
+  const [is1MemoActive, setIs1MemoActive] = useState(false);
+  const [is2MemoActive, setIs2MemoActive] = useState(false);
+  const [is3MemoActive, setIs3MemoActive] = useState(false);
 
   const increaseScore = (value) => {
     setCurrentCoins(prevValue => {
@@ -101,6 +107,16 @@ function App() {
     gameState,
     setCurrentActiveCell,
     currentActiveCell,
+    setIsMemoOpened,
+    isMemoOpened,
+    isBombMemoActive,
+    setIsBombMemoActive,
+    is1MemoActive,
+    setIs1MemoActive,
+    is2MemoActive,
+    setIs2MemoActive,
+    is3MemoActive,
+    setIs3MemoActive,
   }
 
   const handleClick = () => {

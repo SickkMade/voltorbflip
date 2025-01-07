@@ -9,7 +9,7 @@ function Tile({value, id}) {
     const [is2IndicatorActive, setIs2IndicatorActive] = useState(false);
     const [is3IndicatorActive, setIs3IndicatorActive] = useState(false);
     const tileRef = useRef(null)
-    const {setCurrentActiveCell, currentActiveCell, increaseScore, handleLose, gameState} = useContext(AppContext);
+    const {setIsBombMemoActive, setIs1MemoActive, setIs2MemoActive, setIs3MemoActive,isMemoOpened, setCurrentActiveCell, currentActiveCell, increaseScore, handleLose, gameState} = useContext(AppContext);
 
     const handleClick = () => {
         //increase coins if first flip
@@ -23,6 +23,23 @@ function Tile({value, id}) {
         setIs2IndicatorActive(false)
         setIs1IndicatorActive(false)
     }
+
+    const getBorderClass = () => {
+        if(isMemoOpened){
+            return 'active-tile-memo'
+        }
+        else{
+            return 'active-tile'
+        }
+    }
+    useEffect(() => {
+        if(currentActiveCell === id){
+            setIsBombMemoActive(isBombIndicatorActive);
+            setIs1MemoActive(is1IndicatorActive);
+            setIs2MemoActive(is2IndicatorActive);
+            setIs3MemoActive(is3IndicatorActive);
+        }
+    }, [currentActiveCell, isBombIndicatorActive, is1IndicatorActive, is2IndicatorActive, is3IndicatorActive])
 
     useEffect(()=>{
         const onKeyboard = (e) => {
@@ -64,7 +81,7 @@ function Tile({value, id}) {
         }
     },[gameState])
   return (
-    <div className={`tile ${isFlipped ? 'flip' : ''} ${currentActiveCell === id ? 'active-tile' : ''}`} onClick={handleClick} ref={tileRef}>
+    <div className={`tile ${isFlipped ? 'flip' : ''} ${currentActiveCell === id ? getBorderClass() : ''}`} onClick={handleClick} ref={tileRef}>
         {value===-1?<img className="bomb" src="miku.png"></img>:<span>{value}</span>}
         {isBombIndicatorActive && <span className="indicator indicator-bomb"></span>}
         {is1IndicatorActive && <span className="indicator indicator-1">1</span>}

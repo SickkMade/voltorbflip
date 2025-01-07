@@ -102,3 +102,6 @@
 .active-tile{
     border-color: red;
 }
+.active-tile-memo{
+    border-color:yellow;
+}

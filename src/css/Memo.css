@@ -1,19 +1,24 @@
 .memo{
-    border: 5px black solid;
+    outline: 5px black solid;
     border-radius: 1rem;
     position:relative;
     width: var(--sidebar-width);
+    height: var(--sidebar-width);
+    position: relative;
 }
 .memo:hover{
     cursor:pointer;
 }
-.memo:active{
+.memo:active::after{
+    content:'';
+    width:100%;
+    height:100%;
     background-color: rgba(255, 255, 255, 0.23);
 }
 .memo-action{
     background-color: black;
     color:white;
-    border: 1px white solid;
+    border: 2px white solid;
     position:absolute;
     left:50%;
     transform: translateX(-50%);
@@ -24,11 +29,50 @@
 .memo-text{
     font-size:3rem;
     color:black;
-    background: linear-gradient(white, gray);
+    background: linear-gradient(white, white, rgb(177, 177, 177), rgb(177, 177, 177));
     display:flex;
     flex-flow:column;
     align-items: center;
     border-top: 2rem lightgreen solid;
     border-bottom:.25rem lightgreen solid;
     border-radius:.75rem;
+}
+
+.memo-actionmenu{
+    background-color: pink;
+}
+.memo-actionmenu-container{
+    position:absolute;
+    width: 45%;
+    height:45%;
+    outline:gray 3px solid;
+    background-color:lightgray;
+    color: black;
+    font-size:3rem;
+    text-align: center;
+}
+.memo-actionmenu-1{
+    top:5%;
+    right:5%;
+    border-top-right-radius: 1rem;
+}
+.memo-actionmenu-bomb{
+    top:5%;
+    left:5%;
+    border-top-left-radius: 1rem;
+
+}
+.memo-actionmenu-2{
+    bottom:5%;
+    left:5%;
+    border-bottom-left-radius: 1rem;
+}
+.memo-actionmenu-3{
+    bottom:5%;
+    right:5%;
+    border-bottom-right-radius: 1rem;
+}
+.memo-actionmenu-container__active{
+    color:yellow;
+    background-color:green;
 }
