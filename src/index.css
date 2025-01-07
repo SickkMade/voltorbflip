@@ -8,6 +8,8 @@ body{
 }
 :root{
   --sidebar-width:10rem;
+
+  user-select: none;
 }
 html, body, #root {  
   height: 100%;
