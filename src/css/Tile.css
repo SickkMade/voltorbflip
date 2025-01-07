@@ -110,7 +110,6 @@
 
 .active-tile{
     border-color: red;
-    transition: .1s all;
 }
 .active-tile-memo{
     border-color:yellow;
