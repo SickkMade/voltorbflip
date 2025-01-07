@@ -65,7 +65,7 @@ function Tile({value, id}) {
     },[gameState])
   return (
     <div className={`tile ${isFlipped ? 'flip' : ''} ${currentActiveCell === id ? 'active-tile' : ''}`} onClick={handleClick} ref={tileRef}>
-        {value===-1?<img className="bomb" src="miku.png"></img>:value}
+        {value===-1?<img className="bomb" src="miku.png"></img>:<span>{value}</span>}
         {isBombIndicatorActive && <span className="indicator indicator-bomb"></span>}
         {is1IndicatorActive && <span className="indicator indicator-1">1</span>}
         {is2IndicatorActive && <span className="indicator indicator-2">2</span>}

@@ -4,4 +4,10 @@
     border-radius:1rem;
     width:fit-content;
     text-align: center;
+    width:var(--sidebar-width);
+    line-height: .75rem;
+}
+
+.container h2{
+    font-size:3rem;
 }

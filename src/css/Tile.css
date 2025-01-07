@@ -4,13 +4,16 @@
     flex:1;
 
     font-size:2rem;
-    line-height: 4rem;
     text-align: center;
     margin:.1rem;
     border-radius:.5rem;
     border: 3px black solid;
     color:transparent;
     position:relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .tile:hover{
     cursor: pointer;
@@ -55,6 +58,7 @@
 }
 
 .row-tile{
+    display:block;
     color:black;
     line-height:2rem;
     text-align: right;

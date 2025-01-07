@@ -1,6 +1,6 @@
 import GameBoard from "./components/GameBoard"
-import Stats from "./components/Stats"
 import GameLostContainer from "./components/GameLostContainer";
+import Sidebar from "./components/Sidebar";
 import NewLevelContainer from "./components/NewLevelContainer";
 import GameWinContainer from "./components/GameWinContainer";
 import { useState, createContext, useEffect } from "react"
@@ -194,12 +194,11 @@ function App() {
   return (
     <AppContext.Provider value={appContextValue}>
       <section id="app-main-container">
-        <Stats />
+        <Sidebar />
         <GameBoard />
         {gameState == "lost" && <GameLostContainer />}
         {gameState == "win" && <GameWinContainer />}
         {gameState == "playing" && <NewLevelContainer />}
-        <div>Memo</div>
       </section>
       
     </AppContext.Provider>
