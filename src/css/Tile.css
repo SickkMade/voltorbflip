@@ -16,7 +16,7 @@
     align-items: center;
 
     background-image: url(/blanktile.svg);
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: 101%;
 }
 .tile:hover{

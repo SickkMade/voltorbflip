@@ -11,3 +11,11 @@
 .container h2{
     font-size:3rem;
 }
+
+/* mobile */
+@media (max-width:480px){
+    .container h2{
+        font-size:1.5rem;
+        font-weight: bold;
+    }
+  }

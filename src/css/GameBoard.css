@@ -7,6 +7,5 @@
 .GameBoard{
     position: relative;
     width:100%;
-    min-width: 450px;
     max-width:550px;
 }

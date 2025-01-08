@@ -87,3 +87,10 @@
     opacity:0;
     pointer-events: none;
 }
+
+/* mobile */
+@media (max-width:480px){
+    .memo-wrapper{
+        flex-flow:row;
+    }
+  }

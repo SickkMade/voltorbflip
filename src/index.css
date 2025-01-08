@@ -26,3 +26,11 @@ html, body, #root {
   align-items:center;
   gap:2rem;
 }
+
+
+/* mobile */
+@media (max-width:480px){
+  #app-main-container{
+    flex-direction: column;
+  }
+}
