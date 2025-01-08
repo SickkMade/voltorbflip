@@ -14,7 +14,7 @@ function Tile({value, id}) {
     const handleClick = () => {
         //increase coins if first flip
         setCurrentActiveCell(id)
-        if(gameState != "playing" || isFlipped) return //only click if game is runnign
+        if(gameState != "playing" || isFlipped || isMemoOpened) return //only click if game is runnign
         if(!isFlipped) increaseScore(value)
         if(value === -1) handleLose();
         setIsFlipped(true);

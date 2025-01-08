@@ -8,7 +8,7 @@
     top:50%;
     transform:translate(-50%, -50%);
     pointer-events: none;
-    z-index: 2;
+    z-index: 5;
 }
 
 .popup-fade{
